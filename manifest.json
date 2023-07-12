@@ -1,0 +1,9 @@
+{
+    "version": "1.0.0",
+    "manifest_version": 3,
+    "name": "React Chrome Extension",
+    "description": "Ini adalah ekstensi Chrome yang dibangun dengan React dan TypeScript",
+    "action": {
+        "default_title": "React Ekstensi Chrome"
+    }
+}
