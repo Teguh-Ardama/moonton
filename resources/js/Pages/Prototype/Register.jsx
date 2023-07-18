@@ -36,7 +36,7 @@ export default function Register() {
                                     <Input
                                         type="text"
                                         name="fullname"
-                                        value="Angga React"
+                                        value="Teguh Ardama"
                                     />
                                 </div>
                                 <div>
@@ -47,7 +47,7 @@ export default function Register() {
                                     <Input
                                         type="email"
                                         name="email"
-                                        value="anggaforreact@fb.com"
+                                        value="teguh@moonton.test"
                                     />
                                 </div>
                                 <div>
@@ -63,15 +63,17 @@ export default function Register() {
                                 </div>
                             </div>
                             <div className="grid space-y-[14px] mt-[30px]">
-                                <Button
-                                    type="button"
-                                    variant="primary"
-                                    className="bg-alerange"
-                                >
-                                    <span className="text-base  font-semibold">
-                                        Sign Up
-                                    </span>
-                                </Button>
+                                <Link href={route("prototype.dashboard")}>
+                                    <Button
+                                        type="button"
+                                        variant="primary"
+                                        className="bg-alerange"
+                                    >
+                                        <span className="text-base  font-semibold">
+                                            Sign Up
+                                        </span>
+                                    </Button>
+                                </Link>
                                 <Link href={route("prototype.login")}>
                                     <Button
                                         type="button"
