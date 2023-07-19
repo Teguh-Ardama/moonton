@@ -36,7 +36,7 @@ Route::prefix('prototype')->name('prototype.')->group(function () {
     })->name('dashboard');
 
     Route::get('/subscriptionPlan', function(){
-        return Inertia::render('Prototype/subscriptionPlan');
+        return Inertia::render('Prototype/SubscriptionPlan');
     })->name('subscriptionPlan');
 });
 
