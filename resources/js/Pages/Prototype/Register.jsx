@@ -1,6 +1,6 @@
-import Input from "../../Components/Input";
-import Label from "../../Components/Label";
-import Button from "../../Components/Button";
+import Input from "@/Components/Input";
+import Label from "@/Components/Label";
+import Button from "@/Components/Button";
 import { Link, Head } from "@inertiajs/react";
 export default function Register() {
     return (
