@@ -1,7 +1,7 @@
 import { Link, Head } from "@inertiajs/react";
-import Authenticated from "../../Layouts/Authenticated/Index";
-import FeaturedMovie from "../../Components/FeatureMovie";
-import MovieCard from "../../Components/MovieCard";
+import Authenticated from "@/Layouts/Authenticated/Index";
+import FeaturedMovie from "@/Components/FeatureMovie";
+import MovieCard from "@/Components/MovieCard";
 import Flickity from "react-flickity-component";
 
 export default function Dashboard() {

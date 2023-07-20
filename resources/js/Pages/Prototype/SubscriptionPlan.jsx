@@ -1,5 +1,5 @@
-import Authenticated from "../../Layouts/Authenticated/Index";
-import SubscriptionCard from "../../Components/SubscriptionCard";
+import Authenticated from "@/Layouts/Authenticated/Index";
+import SubscriptionCard from "@/Components/SubscriptionCard";
 import { Link, Head } from "@inertiajs/react";
 
 export default function SubscriptionPlan() {

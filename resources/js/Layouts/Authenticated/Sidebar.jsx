@@ -1,4 +1,4 @@
-import SubscriptionDetail from "../../Layouts/Authenticated/SubscriptionDetail";
+import SubscriptionDetail from "@/Layouts/Authenticated/SubscriptionDetail";
 import MenuItem from "./MenuItem";
 import { UserMenu, UserOthers } from "./MenuList";
 
