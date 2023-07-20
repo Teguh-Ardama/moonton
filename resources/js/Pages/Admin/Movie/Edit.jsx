@@ -5,15 +5,11 @@ import Checkbox from "@/Components/Checkbox";
 import Button from "@/Components/Button";
 import ValidationErrors from "@/Components/ValidationErrors";
 import { Head, useForm } from "@inertiajs/react";
+import { Inertia } from "@inertiajs/inertia";
 
-export default function Create({ auth }) {
-    const { setData, post, processing, errors } = useForm({
-        name: "",
-        category: "",
-        video_url: "",
-        thumbnail: "",
-        rating: "",
-        is_featured: false,
+export default function Create({ auth, movie }) {
+    const { data, setData, processing, errors } = useForm({
+        ...movie,
     });
 
     const onHandleChange = (event) => {
@@ -28,13 +24,20 @@ export default function Create({ auth }) {
     const submit = (e) => {
         e.preventDefault();
 
-        post(route("admin.dashboard.movie.store"));
+        if (data.thumbnail === movie.thumbnail) {
+            delete data.thumbnail;
+        }
+
+        Inertia.post(route("admin.dashboard.movie.update", movie.id), {
+            _method: "PUT",
+            ...data,
+        });
     };
 
     return (
         <Authenticated auth={auth}>
-            <Head title="Admin - Create Movie" />
-            <h1 className="text-xl">Insert a new Movie</h1>
+            <Head title="Admin - Update Movie" />
+            <h1 className="text-xl">Update Movie: {movie.name}</h1>
             <hr className="mb-4" />
             <ValidationErrors errors={errors} />
             <form onSubmit={submit}>
@@ -42,8 +45,8 @@ export default function Create({ auth }) {
                 <Input
                     type="text"
                     name="name"
-                    // variant="primary-outline"
-                    className="bg-[#fff] focus:bg-[#fff] border-alerange focus:border-alerange"
+                    defaultValue={movie.name}
+                    variant="primary-outline"
                     handleChange={onHandleChange}
                     placeholder="Enter the name of the movie"
                     isError={errors.name}
@@ -52,8 +55,8 @@ export default function Create({ auth }) {
                 <Input
                     type="text"
                     name="category"
-                    // variant="primary-outline"
-                    className="bg-[#fff] focus:bg-[#fff] border-alerange focus:border-alerange"
+                    defaultValue={movie.category}
+                    variant="primary-outline"
                     handleChange={onHandleChange}
                     placeholder="Enter the category of the movie"
                     isError={errors.category}
@@ -66,8 +69,8 @@ export default function Create({ auth }) {
                 <Input
                     type="url"
                     name="video_url"
-                    // variant="primary-outline"
-                    className="bg-[#fff] focus:bg-[#fff] border-alerange focus:border-alerange"
+                    defaultValue={movie.video_url}
+                    variant="primary-outline"
                     handleChange={onHandleChange}
                     placeholder="Enter the video url of the movie"
                     isError={errors.video_url}
@@ -77,11 +80,15 @@ export default function Create({ auth }) {
                     value="Thumbnail"
                     className="mt-4"
                 />
+                <img
+                    src={`/storage/${movie.thumbnail}`}
+                    alt=""
+                    className="w-40"
+                />
                 <Input
                     type="file"
                     name="thumbnail"
-                    // variant="primary-outline"
-                    className="bg-[#fff] focus:bg-[#fff] border-alerange focus:border-alerange file:bg-alerange file:text-white file:rounded-md file:p-2"
+                    variant="primary-outline"
                     handleChange={onHandleChange}
                     placeholder="Insert thumbnail of the movie"
                     isError={errors.thumbnail}
@@ -90,11 +97,11 @@ export default function Create({ auth }) {
                 <Input
                     type="number"
                     name="rating"
-                    // variant="primary-outline"
-                    className="bg-[#fff] focus:bg-[#fff] border-alerange focus:border-alerange"
+                    variant="primary-outline"
                     handleChange={onHandleChange}
                     placeholder="Enter the rating of the movie"
                     isError={errors.rating}
+                    defaultValue={movie.rating}
                 />
                 <div className="flex flex-row mt-4 items-center">
                     <Label
@@ -107,6 +114,7 @@ export default function Create({ auth }) {
                         handleChange={(e) =>
                             setData("is_featured", e.target.checked)
                         }
+                        checked={movie.is_featured}
                     />
                 </div>
                 <Button type="submit" className="mt-4" processing={processing}>

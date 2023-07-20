@@ -40,6 +40,7 @@ export default function Create({ auth }) {
             <form onSubmit={submit}>
                 <Label forInput="name" value="Name" />
                 <Input
+                    isFocused
                     type="text"
                     name="name"
                     variant="primary-outline"

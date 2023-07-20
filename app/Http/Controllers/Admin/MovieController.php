@@ -7,7 +7,7 @@ use App\Models\Movie;
 use Illuminate\Http\Request;
 use App\Http\Requests\Admin\Movie\Store;
 use App\Http\Requests\Admin\Movie\Update;
-use Storage;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class MovieController extends Controller
@@ -19,11 +19,10 @@ class MovieController extends Controller
      */
     public function index()
     {
-        return inertia('Admin/Movie/Index');
-        // $movies = Movie::withTrashed()->orderBy('deleted_at')->get();
-        // return inertia('Admin/Movie/Index', [
-        //     'movies' => $movies
-        // ]);
+        $movies = Movie::withTrashed()->orderBy('deleted_at')->get();
+        return inertia('Admin/Movie/Index', [
+            'movies' => $movies
+        ]);
     }
 
     /**
