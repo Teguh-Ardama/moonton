@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('subscription_plan_id')->constrained();
             $table->unsignedInteger('price');
             $table->dateTime('expired_date')->nullable();
-            $table->string('paymen_status', 10)->default('pending');
+            $table->string('paymen_status', 10)->default('paid');
             $table->string('snapToken')->nullable();
             $table->timestamps();
             $table->softDeletes();
