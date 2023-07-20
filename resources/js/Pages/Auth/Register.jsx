@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import Input from "../../Components/Input";
-import Label from "../../Components/Label";
-import Button from "../../Components/Button";
+import Input from "@/Components/Input";
+import Label from "@/Components/Label";
+import Button from "@/Components/Button";
 import ValidationErrors from "@/Components/ValidationErrors";
 import { Link, Head, useForm } from "@inertiajs/react";
 export default function Register() {
