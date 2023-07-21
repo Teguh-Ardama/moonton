@@ -16,7 +16,7 @@ class UserSubscription extends Model
             'price',
             'expired_date',
             'paymen_status',
-            'snapToken',
+            'snap_token',
         ];
 
         /**
